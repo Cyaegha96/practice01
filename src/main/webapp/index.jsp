@@ -19,45 +19,44 @@
 </head>
 <body
 	style="background-image: url('https://picsum.photos/1920/1080'); background-size: cover; background-position: center;">
-	
-	
-	
+
+
+
 	<div
 		class="container d-flex justify-content-center align-items-center vh-100">
 
 		<c:choose>
-		<c:when test="${loginId==null}">
-			<div class="login_box shadow-lg p-5 mb-5 g-5 blur-bg rounded">
-			<form action="/login.members" id="login_form" method="post"
-				class="login form">
-				<label for="formGroupExampleInput" class="form-label text-center">아이디</label>
-				<input name="userId" type="text" class="form-control" id="idInput"
-					placeholder="아이디 입력" required title="이 필드는 필수입니다."> <label
-					for="formGroupExampleInput2" class="form-label text-center">패스워드</label>
-				<input name="userPassword" type="password" class="form-control"
-					id="pwInput" placeholder="패스워드 입력" required title="이 필드는 필수입니다.">
-				<button class="btn btn-light w-100 mb-3 mt-3">로그인</button>
-				<a href="/join.members"><button type="button"
-						class="btn btn-light w-100">회원가입</button></a>
-			</form>
-		</div>
-		</c:when>
-		<c:otherwise>
-			<div class="card">
-				<div class="card-header">
-				${loginId} 님 안녕하세요.
-				</div> 
-			</div>
-		</c:otherwise>
-	
-	</c:choose>
+			<c:when test="${userId==null}">
+				<div class="login_box shadow-lg p-5 mb-5 g-5 blur-bg rounded">
+					<form action="/login.members" id="login_form" method="post"
+						class="login form">
+						<label for="formGroupExampleInput" class="form-label text-center">아이디</label>
+						<input name="userId" type="text" class="form-control" id="idInput"
+							placeholder="아이디 입력" required title="이 필드는 필수입니다."> <label
+							for="formGroupExampleInput2" class="form-label text-center">패스워드</label>
+						<input name="userPassword" type="password" class="form-control"
+							id="pwInput" placeholder="패스워드 입력" required title="이 필드는 필수입니다.">
+						<button class="btn btn-light w-100 mb-3 mt-3">로그인</button>
+						<a href="/members/join.jsp"><button type="button"
+								class="btn btn-light w-100">회원가입</button></a>
+					</form>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="card blur-bg">
+					<div class="card-header">${userId} 님 안녕하세요.</div>
+					<div class="card-body">
+						<a href="/list.board"><button type="button"
+								class="btn btn-light w-100">게시판</button></a>
+					</div>
+					<a href="/logout.members"><button type="button"
+							class="btn btn-light w-100">로그아웃</button></a>
+				</div>
+			</c:otherwise>
+		</c:choose>
 	</div>
-
-
 	<script type="text/javascript">
-		//아이디 폼 검사
 		
-		#()
 	</script>
 </body>
 </html>
