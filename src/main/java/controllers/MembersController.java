@@ -39,7 +39,7 @@ public class MembersController extends HttpServlet {
 				}
 			
 			}else if(cmd.equals("/join.members")) {
-
+				
 			}else if(cmd.equals("")) {
 
 			}
