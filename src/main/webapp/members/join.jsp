@@ -32,18 +32,19 @@
 }
 </style>
 </head>
-<body style="background-image: url('https://picsum.photos/1920/1080'); background-size: cover; background-position: center;">
+<body
+	style="background-image: url('https://picsum.photos/1920/1080'); background-size: cover; background-position: center;">
 
 	<div class="container">
 		<div class="card">
 			<div class="card-header bg-primary text-white">회원가입</div>
 			<div class="card-body">
-				<form action="" method="post">
+				<form action="signup.members" method="post">
 					<div class="mb-3 row">
 						<label for="id" class="col-sm-3 col-form-label">아이디</label>
 						<div class="col-sm-6">
 							<input type="text" class="form-control" id="id"
-								placeholder="아이디 입력">
+								placeholder="아이디 입력" name="id">
 						</div>
 						<div class="col-sm-3">
 							<button type="button" class="btn btn-secondary w-100"
@@ -55,7 +56,7 @@
 						<label for="pw" class="col-sm-3 col-form-label">비밀번호</label>
 						<div class="col-sm-9">
 							<input type="password" class="form-control" id="pw"
-								placeholder="비밀번호 입력">
+								placeholder="비밀번호 입력" name="pw">
 						</div>
 					</div>
 
@@ -63,7 +64,7 @@
 						<label for="repw" class="col-sm-3 col-form-label">비밀번호 확인</label>
 						<div class="col-sm-9">
 							<input type="password" class="form-control" id="repw"
-								placeholder="비밀번호 재입력">
+								placeholder="비밀번호 재입력" name="repw">
 						</div>
 					</div>
 
@@ -71,7 +72,7 @@
 						<label for="name" class="col-sm-3 col-form-label">이름</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="name"
-								placeholder="이름 입력">
+								placeholder="이름 입력" name="name">
 						</div>
 					</div>
 
@@ -79,7 +80,7 @@
 						<label for="phone" class="col-sm-3 col-form-label">전화번호</label>
 						<div class="col-sm-9">
 							<input type="tel" class="form-control" id="phone"
-								placeholder="010-1234-5678">
+								placeholder="010-1234-5678" name="phone">
 						</div>
 					</div>
 
@@ -87,14 +88,15 @@
 						<label for="email" class="col-sm-3 col-form-label">이메일</label>
 						<div class="col-sm-9">
 							<input type="email" class="form-control" id="email"
-								placeholder="이메일 입력">
+								placeholder="이메일 입력" name="email">
 						</div>
 					</div>
 
 					<div class="mb-3 row">
 						<label for="zipcode" class="col-sm-3 col-form-label">우편번호</label>
 						<div class="col-sm-6">
-							<input type="text" class="form-control" id="zipcode" readonly>
+							<input type="text" class="form-control" id="zipcode"
+								name="zipcode" readonly>
 						</div>
 						<div class="col-sm-3">
 							<button type="button" class="btn btn-outline-primary w-100"
@@ -106,8 +108,9 @@
 						<label for="address1" class="col-sm-3 col-form-label">주소</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control mb-2" id="address1"
-								placeholder="도로명 주소"> <input type="text"
-								class="form-control" id="address2" placeholder="상세주소">
+								placeholder="도로명 주소" name="address1"> <input type="text"
+								class="form-control" id="address2" placeholder="상세주소"
+								name="address2">
 						</div>
 					</div>
 
@@ -130,85 +133,81 @@
 				$("#id").val("");
 				return false;
 			} else {
-				alert("성공");
-				//$("#resp").html("");
-				//$.ajax({
-				//	url : "/idcheck.members",
-				//	data : {
-				//		id : $("#id").val()
-				//	}
-				//}).done(function(resp) {
-//
-				//	$("#resp").append(resp);
-				//});
+				console.log($("#id").val());
+					
+				$.ajax({
+					url : "/idcheck.members",
+					data : {
+						id : $("#id").val()
+					}
+				}).done(function(resp) {
+
+					$("#resp").append(resp);
+				});
 
 			}
 
 		});
 		$("form")
-		.on(
-				"submit",
-				function() {
+				.on(
+						"submit",
+						function() {
 
-					let regexPw = /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/g;
-					let inspectPw = regexPw.test($("#pw").val());
-					let inspectrePw = $("#repw").val();
-					let regexName = /^[가-힣]{2,6}$/g;
-					let inspectName = regexName.test($("#name").val());
-					let regexPhone = /(010-?\d{4}-?\d{4})/g;
-					let inspectPhone = regexPhone.test($("#phone")
-							.val());
-					let regexEmail = /\w+@{1}[a-z]+\.[a-z]+\.?[a-z]*\.?[a-z]*\.?[a-z]*$/g;
-					let inspectEmail = regexEmail.test($("#email")
-							.val());
+							let regexPw = /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/g;
+							let inspectPw = regexPw.test($("#pw").val());
+							let inspectrePw = $("#repw").val();
+							let regexName = /^[가-힣]{2,6}$/g;
+							let inspectName = regexName.test($("#name").val());
+							let regexPhone = /(010-?\d{4}-?\d{4})/g;
+							let inspectPhone = regexPhone.test($("#phone")
+									.val());
+							let regexEmail = /\w+@{1}[a-z]+\.[a-z]+\.?[a-z]*\.?[a-z]*\.?[a-z]*$/g;
+							let inspectEmail = regexEmail.test($("#email")
+									.val());
 
-					if (!inspectPw) {
-						alert("비밀번호 형식이 다릅니다.");
-						return false;
-					} else if (!inspectName) {
-						alert("이름 형식이 다릅니다.");
-						return false;
-					} else if (!inspectPhone) {
-						alert("연락처 형식이 다릅니다.");
+							if (!inspectPw) {
+								alert("비밀번호 형식이 다릅니다.");
+								return false;
+							} else if (!(inspectrePw == $("#pw").val())) {
+								alert("비밀번호가 일치하지 않습니다.");
+								return false;
+							} else if (!inspectName) {
+								alert("이름 형식이 다릅니다.");
+								return false;
+							} else if (!inspectPhone) {
+								alert("연락처 형식이 다릅니다.");
 
-						return false;
-					} else if (!inspectEmail) {
-						alert("이메일 형식이 다릅니다.");
-						return false;
-					} else if (!(inspectrePw == $("#pw").val())) {
-						alert("비밀번호가 일치하지 않습니다.");
-						return false;
-					} else {
-						alert("성공");
+								return false;
+							} else if (!inspectEmail) {
+								alert("이메일 형식이 다릅니다.");
+								return false;
 
-					}
+							} else {
+								alert("성공");
 
-				});
-		
-		
+							}
+
+						});
 
 		let btn = document.getElementById("postSearchBtn");
 
 		btn.onclick = function() {
 			new daum.Postcode({
 				oncomplete : function(data) {
-					
-					 let zipcode = document.getElementById("zipcode");
-		               zipcode.value = data.zonecode;
-		               let address1 = document.getElementById("address1");
-		               address1.value = data.roadAddress;
+
+					let zipcode = document.getElementById("zipcode");
+					zipcode.value = data.zonecode;
+					let address1 = document.getElementById("address1");
+					address1.value = data.roadAddress;
 				}
 			}).open();
-			
+
 		}
-		$("#reload").on("click",function(){
-			
+		$("#reload").on("click", function() {
+
 			location.reload();
-			
+
 		})
-		
-		
-		
 	</script>
 </body>
 </html>
