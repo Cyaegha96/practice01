@@ -12,9 +12,8 @@
   crossorigin="anonymous"></script>
 </head>
 <body>
-	나 ljm 아무내용
-	아무내용123
-	나는 임종민입니다.
-	저는 꿈이 있습니다..
+
+	임휘경이 이겼습니다.
+
 </body>
 </html>
