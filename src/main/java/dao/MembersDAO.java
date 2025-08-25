@@ -24,7 +24,7 @@ public class MembersDAO {
 		}	
 		return instance;
 	}
-
+	//주석 추가
 	public Connection getConnection() throws Exception{
 		Context ctx = new InitialContext();
 		DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/oracle");
