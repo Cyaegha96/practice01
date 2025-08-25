@@ -148,7 +148,7 @@
 
 <body>
 	<c:choose>
-		<c:when test="${loginId == null}">
+		<c:when test="${userId == null}">
 			<script>
 				alert("로그인 후 이용해주세요.");
 				location.href = "/index.jsp";
@@ -191,7 +191,7 @@
 					<!-- 버튼들 -->
 					<div class="row btns">
 						<!-- 작성자 = 로그인한 사람 -->
-						<c:if test="${loginId == dto.writer }">
+						<c:if test="${userId == dto.writer }">
 
 							<div class="col btns text-end">
 								<form id="delete-Frm" action="/delete.board" method="post">
@@ -208,7 +208,7 @@
 							</div>
 						</c:if>
 						<!-- 작성자 != 로그인한 사람 -->
-						<c:if test="${loginId != dto.writer }">
+						<c:if test="${userId != dto.writer }">
 							<div class="col btns text-end">
 								<button type="button" class="btn btn-dark" id="listBtn">목록으로</button>
 							</div>
@@ -244,7 +244,7 @@
 									pattern="yyyy-MM-dd HH:mm:ss" />
 							</div>
 
-							<c:if test="${loginId == replyDto.writer}">
+							<c:if test="${userId == replyDto.writer}">
 								<form class="reply-Frm" action="" method="post">
 									<div class="col-12 replyBtns">
 										<button type="button"

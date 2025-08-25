@@ -39,7 +39,7 @@
 		<div class="card">
 			<div class="card-header bg-primary text-white">회원가입</div>
 			<div class="card-body">
-				<form action="signup.members" method="post">
+				<form action="join.members" method="post">
 					<div class="mb-3 row">
 						<label for="id" class="col-sm-3 col-form-label">아이디</label>
 						<div class="col-sm-6">
