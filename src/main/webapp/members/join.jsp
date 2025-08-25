@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -18,104 +18,108 @@
 	crossorigin="anonymous"></script>
 
 <style>
-* {
-	box-sizing: border-box;
+.card {
+	max-width: 550px;
+	margin: 50px auto;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	border-radius: 12px;
 }
 
-.container {
-	border: 1px solid blue;
-	margin: auto;
-	width: 500px;
-	height: 500px;
-	width: 500px
-}
-
-.inputform {
-	width: 100%;
-	height: 90%;
-}
-
-.btnform {
-	width: 100%;
-	height: 10%;
-	margin: auto;
-}
-
-.topbar {
+.card-header {
+	font-size: 1.5rem;
+	font-weight: bold;
 	text-align: center;
 }
-
-div {
-	margin: auto;
-}
 </style>
-
-
 </head>
-<body>
-	<form action="" method="post">
+<body style="background-image: url('https://picsum.photos/1920/1080'); background-size: cover; background-position: center;">
+
 	<div class="container">
-		<div class="row inputform">
-			<div class="col-12 topbar">회원가입</div>
-			<div class="col-3">아이디</div>
-			<div class="col-5">
-				<input type="text" placeholder="아이디 입력" id="id">
-			</div>
-			<div class="col-4">
-				<button type="button" id="dupcheck">중복확인</button>
-			</div>
-			<div class="col-3">비밀번호</div>
-			<div class="col-9">
-				<input type="text" placeholder="비밀번호 입력" id="pw">
-			</div>
-			<div class="col-3">비밀번호 확인</div>
-			<div class="col-9">
-				<input type="text" placeholder="비밀번호 입력" id="repw">
-			</div>
-			<div class="col-3">이름</div>
-			<div class="col-9">
-				<input type="text" placeholder="이름 입력" id="name">
-			</div>
-			<div class="col-3">전화번호</div>
-			<div class="col-9">
-				<input type="text" placeholder="전화번호 입력" id="phone">
-			</div>
-			<div class="col-3">이메일</div>
-			<div class="col-9">
-				<input type="text" placeholder="이메일 입력" id="email">
-			</div>
-			<div class="col-3">우편번호</div>
-			<div class="col-5">
-				<input type="text" readonly id="zipcode">
-			</div>
-			<div class="col-4">
-				<button type="button" id="postSearchBtn">우편번호찾기</button>
-			</div>
-			<div class="col-3">상세주소</div>
-			<div class="col-9">
-				<input type="text" id="address1">
-			</div>
-			<div class="col-3"></div>
-			<div class="col-9">
-				<input type="text" id="address2">
-			</div>
+		<div class="card">
+			<div class="card-header bg-primary text-white">회원가입</div>
+			<div class="card-body">
+				<form action="" method="post">
+					<div class="mb-3 row">
+						<label for="id" class="col-sm-3 col-form-label">아이디</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" id="id"
+								placeholder="아이디 입력">
+						</div>
+						<div class="col-sm-3">
+							<button type="button" class="btn btn-secondary w-100"
+								id="dupcheck">중복확인</button>
+						</div>
+					</div>
 
+					<div class="mb-3 row">
+						<label for="pw" class="col-sm-3 col-form-label">비밀번호</label>
+						<div class="col-sm-9">
+							<input type="password" class="form-control" id="pw"
+								placeholder="비밀번호 입력">
+						</div>
+					</div>
+
+					<div class="mb-3 row">
+						<label for="repw" class="col-sm-3 col-form-label">비밀번호 확인</label>
+						<div class="col-sm-9">
+							<input type="password" class="form-control" id="repw"
+								placeholder="비밀번호 재입력">
+						</div>
+					</div>
+
+					<div class="mb-3 row">
+						<label for="name" class="col-sm-3 col-form-label">이름</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="name"
+								placeholder="이름 입력">
+						</div>
+					</div>
+
+					<div class="mb-3 row">
+						<label for="phone" class="col-sm-3 col-form-label">전화번호</label>
+						<div class="col-sm-9">
+							<input type="tel" class="form-control" id="phone"
+								placeholder="010-1234-5678">
+						</div>
+					</div>
+
+					<div class="mb-3 row">
+						<label for="email" class="col-sm-3 col-form-label">이메일</label>
+						<div class="col-sm-9">
+							<input type="email" class="form-control" id="email"
+								placeholder="이메일 입력">
+						</div>
+					</div>
+
+					<div class="mb-3 row">
+						<label for="zipcode" class="col-sm-3 col-form-label">우편번호</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" id="zipcode" readonly>
+						</div>
+						<div class="col-sm-3">
+							<button type="button" class="btn btn-outline-primary w-100"
+								id="postSearchBtn">찾기</button>
+						</div>
+					</div>
+
+					<div class="mb-3 row">
+						<label for="address1" class="col-sm-3 col-form-label">주소</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control mb-2" id="address1"
+								placeholder="도로명 주소"> <input type="text"
+								class="form-control" id="address2" placeholder="상세주소">
+						</div>
+					</div>
+
+					<div class="d-flex justify-content-between">
+						<button type="button" class="btn btn-secondary">초기화면</button>
+						<button type="submit" class="btn btn-success">회원가입</button>
+						<button type="button" class="btn btn-danger" id="reload">다시입력</button>
+					</div>
+				</form>
+			</div>
 		</div>
-		<div class="row btnform">
-			<div class="col-4">
-				<button type="button">초기화면</button>
-			</div>
-			<div class="col-4">
-				<button type="submit">회원가입</button>
-			</div>
-			<div class="col-4">
-				<button type="button" id="reload">다시입력</button>
-			</div>
-		</div>
-
-
 	</div>
-</form>
 
 	<script>
 		$("#dupcheck").on("click", function() {
@@ -206,7 +210,5 @@ div {
 		
 		
 	</script>
-
-
 </body>
 </html>
