@@ -32,6 +32,7 @@ public class MembersDAO {
 	}
 
 	public void addMember(MembersDTO membersDTO) throws Exception{
+		//dto 받아서 멤버 추가하는 메서드
 		String sql = "insert into members values(?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP)";
 
 		try(
@@ -52,6 +53,7 @@ public class MembersDAO {
 	}
 
 	public boolean checkDuplicateId(String id) throws Exception{
+		//id로 중복 체크하는 메서드
 		String sql = "select id from members where id=?";
 
 		try(
@@ -77,6 +79,7 @@ public class MembersDAO {
 	}
 
 	public boolean checkLogin(String id, String pw) throws Exception{
+		//로그인 가능한지 확인하는 메서드
 		String sql = "select * from members where id=? and pw=?";
 
 		try(
@@ -101,6 +104,7 @@ public class MembersDAO {
 	}
 
 	public int deleteMember(String id) throws Exception{
+		//회원 삭제 메서드
 		String sql = "delete from members where id=?";
 
 		try(
@@ -116,6 +120,7 @@ public class MembersDAO {
 	}
 
 	public MembersDTO myPagePrint(String id) throws Exception{
+		//마이 페이지 정보 가져오는 메서드
 		System.out.println(id);
 		String sql = "select * from members where id=?";
 
@@ -142,19 +147,13 @@ public class MembersDAO {
 					String address1 =result.getString("address1");
 
 					String address2 =result.getString("address2");
-					//				String join_date = result.getString("join_date");
-
-					Timestamp timestamp = result.getTimestamp("join_date");  // DB에서 TIMESTAMP 컬럼 가져옴
+					
+					Timestamp timestamp = result.getTimestamp("join_date");
 
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy년MM월dd일");
 					String formatted = sdf.format(timestamp);
-					//			MembersDTO(String id, String pw, String name, String phone, String email, String zipcode, String address1,
-					//					String address2, String join_date)
 					MembersDTO dto = new MembersDTO(id,"",name,phone,email,zipcode,address1,address2,formatted);
-					System.out.println(name);
-					System.out.println(email);
-					System.out.println(formatted);
-					System.out.println(phone);
+					
 					return dto;	
 				}
 				else
@@ -167,34 +166,23 @@ public class MembersDAO {
 	}
 
 	public int myPageUpdate(MembersDTO dto) throws Exception{
+		//dto를 받아서 myPage 정보 수정해주는 메서드
 		String sql = "update members set phone = ?, email = ?, zipcode = ?, address1 = ?, address2 = ? where id = ?";
 		try(
 				Connection con = getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
 				)
 		{
-			System.out.println("myPageUpdate");
 			pstat.setString(1, dto.getPhone());
 			pstat.setString(2, dto.getEmail());
 			pstat.setString(3, dto.getZipcode());
 			pstat.setString(4, dto.getAddress1());
 			pstat.setString(5, dto.getAddress2());
 			pstat.setString(6, dto.getId());
-			System.out.println("ID:"+dto.getId());
-
-			System.out.println("실행될 쿼리 파라미터:");
-			System.out.println("phone: " + dto.getPhone());
-			System.out.println("email: " + dto.getEmail());
-			System.out.println("zipcode: " + dto.getZipcode());
-			System.out.println("address1: " + dto.getAddress1());
-			System.out.println("address2: " + dto.getAddress2());
-			System.out.println("id: " + dto.getId());
-
-			System.out.println("여기까지온다11123123.");
+			
 
 			int result = pstat.executeUpdate();
 
-			System.out.println("여기까지온다111.");
 			return result;
 		}
 		catch (Exception e) {
