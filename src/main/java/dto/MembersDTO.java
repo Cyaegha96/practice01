@@ -1,5 +1,7 @@
 package dto;
 
+import java.sql.Timestamp;
+
 public class MembersDTO {
 	private String id;
 	private String pw;
@@ -10,7 +12,6 @@ public class MembersDTO {
 	private String address1;
 	private String address2;
 	private String join_date;
-	
 	public String getId() {
 		return id;
 	}
@@ -65,9 +66,9 @@ public class MembersDTO {
 	public void setJoin_date(String join_date) {
 		this.join_date = join_date;
 	}
-	
 	public MembersDTO() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 	public MembersDTO(String id, String pw, String name, String phone, String email, String zipcode, String address1,
 			String address2, String join_date) {
@@ -82,4 +83,6 @@ public class MembersDTO {
 		this.address2 = address2;
 		this.join_date = join_date;
 	}
+	
+	
 }
