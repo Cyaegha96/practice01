@@ -12,6 +12,8 @@
   crossorigin="anonymous"></script>
 </head>
 <body>
-	저 들어가요~ 충돌~~ 범퍼카
+
+	임휘경이 이겼습니다.
+
 </body>
 </html>
