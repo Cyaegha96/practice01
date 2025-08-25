@@ -9,9 +9,10 @@
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
 	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-	crossorigin="anonymous" type="text/javascript">
+	crossorigin="anonymous" type="text/javascript"/>
 </head>
 <body>
 	내용이 없었는데 생겼습니다.
+	또 보내래
 </body>
 </html>
